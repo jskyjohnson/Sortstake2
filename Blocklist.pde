@@ -28,9 +28,35 @@ class Blocklist{
    }
  }
  //getMethods
- 
+ //Checks if two blocks can be swapped
+ boolean getCanSwap(int a, int b){
+   return false;
+ }
+ //checks if all the blocks are not moving
+ boolean getAllCanMove(){
+   return false;
+ }
+ //returns size of the block arraylist
+ int getSize(){
+   return 0;
+ }
+ //returns block at A
+ Block getBlock(int a){
+   return new Block();
+ }
+ //returns arraylist of blocks
+ ArrayList<Block> getBlocklist(){
+  return blocks; 
+ }
  //editing methods, these methods will change that actual values in the arraylist
- 
+ //swapblock will swap two blocks
+ void swapblock(){
+   
+ }
+ //changes layout to have two arraylists at the same time
+ void duelHeap(){
+   
+ }
  //shuffleblocks should randomly shuffle the blocks
  void shuffleblocks(){
    
