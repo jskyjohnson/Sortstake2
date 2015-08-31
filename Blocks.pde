@@ -22,4 +22,7 @@ class Block{
   void graphicalupdate(){
     
   }
+  float getValue(){
+    return 0.0;
+  }
 }

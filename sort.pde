@@ -16,8 +16,8 @@ public abstract class Sort{
   }
   //checks if the blocks are sorted
   boolean isSorted(){
-    for(int i = 0; i < blocks.getLength() -1; i++){
-      if(blocks.getBlock(i).getValue() < data.getBlock(i+1).getValue()){
+    for(int i = 0; i < blocks.getSize() -1; i++){
+      if(blocks.getBlock(i).getValue() < blocks.getBlock(i+1).getValue()){
        return false; 
       }
     }
