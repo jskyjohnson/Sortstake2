@@ -48,7 +48,11 @@ class Blocklist{
  ArrayList<Block> getBlocklist(){
   return blocks; 
  }
- //editing methods, these methods will change that actual values in the arraylist
+ //editing methods, these methods will change that actual values in the arraylist'
+ //generate generates the list at a certain size a
+ void generate(int a){
+   
+ }
  //swapblock will swap two blocks
  void swapblock(){
    

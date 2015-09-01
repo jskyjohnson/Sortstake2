@@ -2,7 +2,8 @@ public abstract class Sort{
   //Objects
   //blocklist that holds all the data
   Blocklist blocks = null;
-  
+  //arraylist that holds the sort commands
+  ArrayList<commands> commands;
   //booleans
   //sorted is if the blocks are sorted
   boolean sorted;
