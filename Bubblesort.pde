@@ -1,7 +1,7 @@
 class Bubblesort extends Sort{
   //See sort abstract
-  Bubblesort(){
-    
+  Bubblesort(Blocklist datain){
+    super(datain);
   }
   void update(){
     

@@ -1,68 +1,72 @@
 //Object to hold block objects
 
 class Blocklist{
- //Arraylist that actually holds the blocks
- ArrayList<Block> blocks;
- //booleans of Blocklsit
- boolean canmove;
+ ArrayList<Block> blocks; //Arraylist that actually holds the blocks
+
+ boolean canmove;  //booleans of Blocklist
  
- //Constructor
- Blocklist(){
-   //creates new arraylist of blocks
-   blocks = new ArrayList<Block>();
+ 
+ Blocklist(){ //Constructor default 
+   blocks = new ArrayList<Block>(); //creates new arraylist of blocks
    canmove = true;
  }
  //update and graphicalupdate shouldn't need much more changes
- //update Method for non-graphical updates
- void update(){
+ 
+ void update(){ //update Method for non-graphical updates
    //goes through each individual block and updates
    for(Block thisblock : blocks){
     thisblock.update(); 
    }
  }
- 
- //graphicalupdate for graphical updates, but will actually be drawn in the main sortstake2
- void graphicalupdate(){
+
+ void graphicalupdate(){  //graphicalupdate for graphical updates, but will actually be drawn in the main sortstake2
    for(Block thisblock : blocks){
     thisblock.graphicalupdate(); 
    }
  }
- //getMethods
- //Checks if two blocks can be swapped
- boolean getCanSwap(int a, int b){
+ 
+ //getMethods SHOULD NOT EDIT ANYTHING
+ 
+ boolean getCanSwap(int a, int b){ //Checks if two blocks can be swapped
    return false;
  }
- //checks if all the blocks are not moving
- boolean getAllCanMove(){
+ 
+ boolean getAllCanMove(){ //checks if all the blocks are not moving
    return false;
  }
- //returns size of the block arraylist
- int getSize(){
+ 
+ int getSize(){ //returns size of the block arraylist
    return 0;
  }
- //returns block at A
- Block getBlock(int a){
+ 
+ Block getBlock(int a){ //returns block at A
    return new Block();
  }
- //returns arraylist of blocks
- ArrayList<Block> getBlocklist(){
+ 
+ ArrayList<Block> getBlocklist(){ //returns arraylist of blocks
   return blocks; 
  }
- //editing methods, these methods will change that actual values in the arraylist'
- //generate generates the list at a certain size a
- void generate(int a){
+ //editing methods, these methods will change that actual values in the arraylist THESE ACTUALLY CHANGE VALUES
+
+ void generate(int a){  //generate generates the list at a certain size a
+   for(int i = 0; i < a; i++){
+     this.addBlock(new Block(i*(((MOVEABLESIZEY) - PADDINGX)/a),MOVEABLESIZEY-(PADDINGY),((MOVEABLESIZEY) - PADDINGX)/a, -1*(((((MOVEABLESIZEY) - PADDINGY)-10)/a) + ((((MOVEABLESIZEY) - PADDINGY)-10)/(a-1))*i)));
+   }
+ }
+
+ void addBlock(Block blocktoadd){  //Adds a new block to this list
+  blocks.add(blocktoadd); 
+ }
+
+ void swapblock(){  //swapblock will swap two blocks
    
  }
- //swapblock will swap two blocks
- void swapblock(){
+
+ void duelHeap(){  //changes layout to have two arraylists at the same time
    
  }
- //changes layout to have two arraylists at the same time
- void duelHeap(){
-   
- }
- //shuffleblocks should randomly shuffle the blocks
- void shuffleblocks(){
+ 
+ void shuffleblocks(){ //shuffleblocks should randomly shuffle the blocks
    
  }
  
