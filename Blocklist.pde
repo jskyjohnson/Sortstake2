@@ -17,6 +17,7 @@ class Blocklist{
    for(Block thisblock : blocks){
     thisblock.update(); 
    }
+   
  }
 
  void graphicalupdate(){  //graphicalupdate for graphical updates, but will actually be drawn in the main sortstake2
@@ -67,7 +68,13 @@ class Blocklist{
  }
  
  void shuffleblocks(){ //shuffleblocks should randomly shuffle the blocks
-   
+   for(int i = 0; i < blocks.size(); i++){
+     int index = (int)random(blocks.size());
+     float tempx1 = blocks.get(index).getX();
+     blocks.get(index).setX(blocks.get(i).getX());
+     blocks.get(i).setX(tempx1);
+     
+   }
  }
  
  

@@ -36,6 +36,12 @@ class Block{
   float getValue(){
     return 0.0;
   }
+  float getY(){
+   return y; 
+  }
+  float getX(){
+   return x; 
+  }
   //EDIT METHODS, SHOULD ONLY EDIT VALUES
   void setY(float newy){ // changes value of the y component
     y = newy;
