@@ -9,4 +9,18 @@ class Command{ //values for a command
   int a;
   int b;
   Type type;
+  
+  Command(){
+   a = 0;
+   b = 1;
+   type = Type.SWAP;
+  }
+  Command(int aa, int ab, Type atype){
+    a = aa;
+    b = ab;
+    type = atype;
+  }
+  String toString(){
+   return a +" " + b + " " + type; 
+  }
 }

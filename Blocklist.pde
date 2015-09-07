@@ -59,8 +59,11 @@ class Blocklist{
   blocks.add(blocktoadd); 
  }
 
- void swapblock(){  //swapblock will swap two blocks
-   
+ void swapblock(int a, int b){  //swapblock will swap two blocks
+   Block tempblock = blocks.get(a);
+   blocks.get(a).setNewPosition(blocks.get(b).getX());
+   blocks.get(b).setNewPosition(tempblock.getX());
+   //System.out.println("SWAP BLOCKS");
  }
 
  void duelHeap(){  //changes layout to have two arraylists at the same time

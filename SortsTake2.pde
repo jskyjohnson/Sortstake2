@@ -15,7 +15,6 @@ float PADDINGY = 50;
 //Boolean checks
 
 
-
 //Setup method only run in the begining
 void setup(){
   //Basic UI menu Defaults
@@ -27,7 +26,7 @@ void setup(){
  blocklist = new Blocklist();
  sortobject = new Bubblesort(blocklist);
  
- blocklist.generate(10);  //Generate blocklist values 
+ blocklist.generate(20);  //Generate blocklist values 
  blocklist.shuffleblocks(); //Shuffles block list to be random
  
 }
@@ -45,4 +44,9 @@ void draw(){ //Draw, only for graphical updates, THIS SHOULD NOT BE CHANGED MUCH
     translate(PADDINGX, PADDINGY);
     blocklist.graphicalupdate();
   popMatrix();
+}
+//TEST METHODS
+void mouseClicked(){ // testing something everytime a mouse is clicked
+  blocklist.swapblock(1,2);
+  //System.out.println("MOUSE CLICKED");
 }

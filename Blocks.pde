@@ -7,12 +7,18 @@ class Block{
   float size; //Size is the value of the blocks X component. This will be dependant on the size of the screen, or avaible moveable space.
   //BOOLEAN VALUES
   boolean canBeMoved;  //value for if the block is in movement.
+  boolean isMoved; // check value of isMoving
+  float newposition;
+  float speed = 20;
   
   Block(){ //default constructor
     x = 0 ;
     y = 0;
     size = 50;
     value = 50;
+    newposition = x;
+    isMoved = false;
+    canBeMoved = true;
   }
  
   Block(float ax, float ay, float asize, float avalue){  //input constructor
@@ -20,17 +26,34 @@ class Block{
    y = ay;
    size = asize;
    value = avalue;
+   newposition = x;
+   isMoved = false;
+   canBeMoved = true;
   }
   //DEFUALT METHODS
   void update(){ //void non-graphical update
-    
+    if(newposition > x){
+     x++; 
+    }else if(newposition < x){
+      x--;
+    }else{
+      isMoved = false;
+      canBeMoved = true;
+    }
   }
-  
   void graphicalupdate(){ //void graphical update for block object, to be called from the blocklist object
     pushMatrix();
      translate(x,y);
      rect(0,0,size,value);
     popMatrix();
+  }
+  void setNewPosition(float a){//sets value for new position
+    if(canBeMoved){
+      this.newposition = a;
+      canBeMoved = false;
+      isMoved = true;
+    }
+    
   }
   //GET METHODS, SHOULD ONLY RETURN VALUES
   float getValue(){
@@ -49,4 +72,5 @@ class Block{
   void setX(float newx){ //changes value of the x compoinent
     x = newx; 
   }
+  
 }
