@@ -40,7 +40,7 @@ class Blocklist{
  }
  
  int getSize(){ //returns size of the block arraylist
-   return 0;
+   return blocks.size();
  }
  
  Block getBlock(int a){ //returns block at A

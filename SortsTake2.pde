@@ -24,9 +24,9 @@ void setup(){
   MOVEABLESIZEY = SIZEY - PADDINGY;
   
  blocklist = new Blocklist();
- sortobject = new Testsort(blocklist);
- 
  blocklist.generate(20);  //Generate blocklist values 
+ System.out.println(blocklist.getSize());
+ sortobject = new Bogosort(blocklist);
  blocklist.shuffleblocks(); //Shuffles block list to be random
  
 }
