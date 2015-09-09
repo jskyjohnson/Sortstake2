@@ -24,7 +24,7 @@ void setup(){
   MOVEABLESIZEY = SIZEY - PADDINGY;
   
  blocklist = new Blocklist();
- sortobject = new Bubblesort(blocklist);
+ sortobject = new Testsort(blocklist);
  
  blocklist.generate(20);  //Generate blocklist values 
  blocklist.shuffleblocks(); //Shuffles block list to be random
@@ -45,8 +45,14 @@ void draw(){ //Draw, only for graphical updates, THIS SHOULD NOT BE CHANGED MUCH
     blocklist.graphicalupdate();
   popMatrix();
 }
+
 //TEST METHODS
+int test1=0;
+int test2=1;
 void mouseClicked(){ // testing something everytime a mouse is clicked
-  blocklist.swapblock(1,2);
+  if(blocklist.swapblock(test1,test2)){
+    test1++;
+    test2++;
+  }
   //System.out.println("MOUSE CLICKED");
 }

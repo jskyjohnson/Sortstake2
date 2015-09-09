@@ -29,6 +29,9 @@ class Blocklist{
  //getMethods SHOULD NOT EDIT ANYTHING
  
  boolean getCanSwap(int a, int b){ //Checks if two blocks can be swapped
+   if(blocks.get(a).canBeMoved && blocks.get(b).canBeMoved){
+     return true;
+   }
    return false;
  }
  
@@ -59,10 +62,17 @@ class Blocklist{
   blocks.add(blocktoadd); 
  }
 
- void swapblock(int a, int b){  //swapblock will swap two blocks
-   Block tempblock = blocks.get(a);
-   blocks.get(a).setNewPosition(blocks.get(b).getX());
-   blocks.get(b).setNewPosition(tempblock.getX());
+ boolean swapblock(int a, int b){  //swapblock will swap two blocks
+   if(getCanSwap(a,b)){
+     Block tempblock = blocks.get(a);
+     blocks.get(a).setNewPosition(blocks.get(b).getX());
+     blocks.get(b).setNewPosition(tempblock.getX());
+     Block temp = blocks.get(a);
+     blocks.set(a, blocks.get(b));
+     blocks.set(b, temp);
+     return true;
+   }
+   return false;
    //System.out.println("SWAP BLOCKS");
  }
 
@@ -75,8 +85,12 @@ class Blocklist{
      int index = (int)random(blocks.size());
      float tempx1 = blocks.get(index).getX();
      blocks.get(index).setX(blocks.get(i).getX());
+     blocks.get(index).setPosition(blocks.get(i).getX());
      blocks.get(i).setX(tempx1);
-     
+     blocks.get(i).setPosition(tempx1);
+     Block temp = blocks.get(index);
+     blocks.set(index, blocks.get(i));
+     blocks.set(i, temp);
    }
  }
  

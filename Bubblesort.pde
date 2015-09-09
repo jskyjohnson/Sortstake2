@@ -9,4 +9,9 @@ class Bubblesort extends Sort{
   void nextCommand(){
     
   }
+  ArrayList<Command> generateCommands(Blocklist datain){ // this is where you will generate the commands to be sorted
+    
+    
+    return null;
+  }
 }

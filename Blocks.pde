@@ -33,9 +33,11 @@ class Block{
   //DEFUALT METHODS
   void update(){ //void non-graphical update
     if(newposition > x){
+     //canBeMoved = false;
      x++; 
     }else if(newposition < x){
-      x--;
+    // canBeMoved = false;
+     x--;
     }else{
       isMoved = false;
       canBeMoved = true;
@@ -45,6 +47,8 @@ class Block{
     pushMatrix();
      translate(x,y);
      rect(0,0,size,value);
+     textSize(8);
+     text((int)value,0,10);
     popMatrix();
   }
   void setNewPosition(float a){//sets value for new position
@@ -65,12 +69,18 @@ class Block{
   float getX(){
    return x; 
   }
+  float getNewPosition(){
+   return newposition; 
+  }
   //EDIT METHODS, SHOULD ONLY EDIT VALUES
   void setY(float newy){ // changes value of the y component
     y = newy;
   }
   void setX(float newx){ //changes value of the x compoinent
     x = newx; 
+  }
+  void setPosition(float a){
+    newposition = a;
   }
   
 }

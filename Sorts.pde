@@ -5,7 +5,7 @@ public abstract class Sort{
   //arraylist that holds the sort commands
   ArrayList<Command> commands;
   //Int values
-  int currentCommand;
+  int currentcommand;
   
   //booleans
   //sorted is if the blocks are sorted
@@ -13,20 +13,25 @@ public abstract class Sort{
   //Constructor for Sort objects, takes in a Blocklist
   Sort(Blocklist datain){
     blocks = datain;
-    commands = generateCommands(blocks);
+    currentcommand = 0;
+    //commands = generateCommands(blocks);
   }
   
   //non-graphical update, no graphical update method should be needed for sorts
   void update(){
     
   }
-  //generates the command arraylist;
-  ArrayList<Command> generateCommands(Blocklist datain){
-    return null;
+  //Generation of arraylist must be done inside abstract
+  
+  void canNextCommand(){
+    if(currentcommand + 1 == commands.size()){
+     sorted = true; 
+    }
   }
   //goes to the next command
   void nextCommand(){
-    currentCommand++;
+    canNextCommand();
+    currentcommand++;
   }
   //checks if the blocks are sorted
   boolean isSorted(){
