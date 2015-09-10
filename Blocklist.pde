@@ -24,6 +24,11 @@ class Blocklist{
    for(Block thisblock : blocks){
     thisblock.graphicalupdate(); 
    }
+   for(Block thisblock : blocks){
+    if(!thisblock.canBeMoved){
+      thisblock.graphicalupdate(); 
+    }
+   }
  }
  
  //getMethods SHOULD NOT EDIT ANYTHING
@@ -36,7 +41,12 @@ class Blocklist{
  }
  
  boolean getAllCanMove(){ //checks if all the blocks are not moving
-   return false;
+   for(Block block : blocks){
+      if(!block.canBeMoved){
+       return false; 
+      }
+   }
+   return true;
  }
  
  int getSize(){ //returns size of the block arraylist
@@ -63,7 +73,7 @@ class Blocklist{
  }
 
  boolean swapblock(int a, int b){  //swapblock will swap two blocks
-   if(getCanSwap(a,b)){
+   if(getCanSwap(a,b) && getAllCanMove()){
      Block tempblock = blocks.get(a);
      blocks.get(a).setNewPosition(blocks.get(b).getX());
      blocks.get(b).setNewPosition(tempblock.getX());

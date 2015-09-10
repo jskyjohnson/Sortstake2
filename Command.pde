@@ -1,7 +1,7 @@
 //Command Object
 //A non-graphical version of the sorts. Sort objects generate a command that tells the SortsMain what to process next graphically
 
-//Enum for command
+//type current is defined as 1 = default swap
   
 class Command{ //values for a command
   int a;

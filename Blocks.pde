@@ -10,6 +10,7 @@ class Block{
   boolean isMoved; // check value of isMoving
   float newposition;
   float speed = 20;
+  color thiscolor;
   
   Block(){ //default constructor
     x = 0 ;
@@ -19,6 +20,7 @@ class Block{
     newposition = x;
     isMoved = false;
     canBeMoved = true;
+    thiscolor = color(255, 255, 255);
   }
  
   Block(float ax, float ay, float asize, float avalue){  //input constructor
@@ -29,26 +31,30 @@ class Block{
    newposition = x;
    isMoved = false;
    canBeMoved = true;
+   thiscolor = color(255, 255, 255);
   }
   //DEFUALT METHODS
   void update(){ //void non-graphical update
     if(newposition > x){
-     //canBeMoved = false;
+      thiscolor = color(255, 130, 130);
      x++; 
     }else if(newposition < x){
-    // canBeMoved = false;
+      thiscolor = color(255, 130, 130);
      x--;
     }else{
       isMoved = false;
       canBeMoved = true;
+      thiscolor = color(255,255,255);
     }
   }
   void graphicalupdate(){ //void graphical update for block object, to be called from the blocklist object
     pushMatrix();
      translate(x,y);
+     fill(thiscolor);
      rect(0,0,size,value);
      textSize(8);
      text((int)value,0,10);
+     fill(color(255,255,255));
     popMatrix();
   }
   void setNewPosition(float a){//sets value for new position
