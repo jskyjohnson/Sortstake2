@@ -9,9 +9,8 @@ class Block{
   boolean canBeMoved;  //value for if the block is in movement.
   boolean isMoved; // check value of isMoving
   float newposition;
-  float speed = 20;
+  float speed = 10;
   color thiscolor;
-  
   Block(){ //default constructor
     x = 0 ;
     y = 0;
@@ -37,10 +36,10 @@ class Block{
   void update(){ //void non-graphical update
     if(newposition > x){
       thiscolor = color(255, 130, 130);
-     x++; 
+     x+= speed; 
     }else if(newposition < x){
       thiscolor = color(255, 130, 130);
-     x--;
+     x-=speed;
     }else{
       isMoved = false;
       canBeMoved = true;
@@ -67,7 +66,7 @@ class Block{
   }
   //GET METHODS, SHOULD ONLY RETURN VALUES
   float getValue(){
-    return 0.0;
+    return value;
   }
   float getY(){
    return y; 

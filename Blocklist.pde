@@ -32,10 +32,25 @@ class Blocklist{
  }
  
  //getMethods SHOULD NOT EDIT ANYTHING
- 
+ ArrayList<Float> getValueList(){
+  ArrayList<Float> toreturn = new ArrayList<Float>();
+  String k = "";
+  String l = "";
+  for(Block block : blocks){
+   toreturn.add(block.getValue()); 
+   k+= block.getValue() + " : ";
+  }
+  System.out.println(k);
+  return toreturn;
+ }
  boolean getCanSwap(int a, int b){ //Checks if two blocks can be swapped
-   if(blocks.get(a).canBeMoved && blocks.get(b).canBeMoved){
-     return true;
+   try{
+     if(blocks.get(a).canBeMoved && blocks.get(b).canBeMoved){
+       return true;
+     }
+   }catch (Exception e){
+     System.out.println("OUT OF BOUNDS");
+    return false; 
    }
    return false;
  }
@@ -54,7 +69,7 @@ class Blocklist{
  }
  
  Block getBlock(int a){ //returns block at A
-   return new Block();
+   return blocks.get(a);
  }
  
  ArrayList<Block> getBlocklist(){ //returns arraylist of blocks
@@ -83,7 +98,6 @@ class Blocklist{
      return true;
    }
    return false;
-   //System.out.println("SWAP BLOCKS");
  }
 
  void duelHeap(){  //changes layout to have two arraylists at the same time

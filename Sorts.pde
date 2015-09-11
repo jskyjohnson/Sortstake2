@@ -22,6 +22,7 @@ public abstract class Sort{
     //System.out.println(this.commands.get(this.currentcommand));
    
     if(!sorted){ // checks to see if it's sorted, if it is, will not run the command
+      try{
       int looking = commands.get(currentcommand).getType(); // gets the type of command, 1 is a swap command, 
       switch(looking){ // switch to see what command it is
        case 1: // does swap
@@ -32,6 +33,9 @@ public abstract class Sort{
          }
          break;
        default:
+      }
+      }catch (Exception e){
+       
       }
     }
   }

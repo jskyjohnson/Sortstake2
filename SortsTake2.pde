@@ -26,9 +26,18 @@ void setup(){
  blocklist = new Blocklist();
  blocklist.generate(20);  //Generate blocklist values 
  System.out.println(blocklist.getSize());
- sortobject = new Bogosort(blocklist);
- blocklist.shuffleblocks(); //Shuffles block list to be random
  
+ /*
+    ____ ___  _   _ _   _  ___  ____  
+  / ___/ _ \| \ | | \ | |/ _ \|  _ \ 
+ | |  | | | |  \| |  \| | | | | |_) |
+ | |__| |_| | |\  | |\  | |_| |  _ < 
+  \____\___/|_| \_|_| \_|\___/|_| \_\
+ */
+ sortobject = new Quicksort(blocklist); // CHANGE THIS OBJECT TO CHANGE WHAT KIND OF SORT, we will ad a selection menu for the kinds of sorts later
+ 
+ 
+ blocklist.shuffleblocks(); //Shuffles block list to be random
 }
 //Default Methods, SHOULD NOT BE CHANGED MUCH
 void update(){ //update for non-graphical updates, THIS SHOULD NOT BE CHANGED MUCH

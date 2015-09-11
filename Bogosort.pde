@@ -13,7 +13,7 @@ class Bogosort extends Sort{
     while(notSorted){
      // System.out.println(datain.getSize());
       commandlist.add(new Command((int)random(blocks.getSize()),(int)random(blocks.getSize()),1));
-      if(commandlist.size() > 10){
+      if(commandlist.size() > 100){
        notSorted = false; 
       }
     }
