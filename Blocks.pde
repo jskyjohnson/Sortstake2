@@ -65,6 +65,9 @@ class Block{
     
   }
   //GET METHODS, SHOULD ONLY RETURN VALUES
+  String getString(){
+   return " "+value; 
+  }
   float getValue(){
     return value;
   }

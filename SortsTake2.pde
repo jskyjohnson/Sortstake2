@@ -24,8 +24,8 @@ void setup(){
   MOVEABLESIZEY = SIZEY - PADDINGY;
   
  blocklist = new Blocklist();
- blocklist.generate(20);  //Generate blocklist values 
- System.out.println(blocklist.getSize());
+ blocklist.generate(40);  //Generate blocklist values 
+ blocklist.shuffleblocks(); //Shuffles block list to be random
  
  /*
     ____ ___  _   _ _   _  ___  ____  
@@ -37,7 +37,6 @@ void setup(){
  sortobject = new Quicksort(blocklist); // CHANGE THIS OBJECT TO CHANGE WHAT KIND OF SORT, we will ad a selection menu for the kinds of sorts later
  
  
- blocklist.shuffleblocks(); //Shuffles block list to be random
 }
 //Default Methods, SHOULD NOT BE CHANGED MUCH
 void update(){ //update for non-graphical updates, THIS SHOULD NOT BE CHANGED MUCH
