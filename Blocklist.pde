@@ -100,6 +100,13 @@ class Blocklist{
    
  }
  
+ void highlightPivot(int a){ // highlights pivot block
+   for(Block block : blocks){
+     block.resetColor();
+   }
+   blocks.get(a).highlight();
+ }
+ 
  void shuffleblocks(){ //shuffleblocks should randomly shuffle the blocks
    
    for(int i = 0; i < blocks.size(); i++){
@@ -113,7 +120,6 @@ class Blocklist{
      blocks.set(index, blocks.get(i));
      blocks.set(i, temp);
    }
-   printBlocks();
  }
  
  void printBlocks(){

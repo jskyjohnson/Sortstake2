@@ -24,7 +24,7 @@ void setup(){
   MOVEABLESIZEY = SIZEY - PADDINGY;
   
  blocklist = new Blocklist();
- blocklist.generate(40);  //Generate blocklist values 
+ blocklist.generate(100);  //Generate blocklist values CANNOT EXCED MOVEABLESIZEX
  blocklist.shuffleblocks(); //Shuffles block list to be random
  
  /*

@@ -37,6 +37,7 @@ class Quicksort extends Sort{
   void quickSort(float[] arra,int left, int right){//quick sort algorithm initial
   if(left < right){
      int index = partition( arra,left, right);
+    // commandlist.add(new Command(index, 2));
      quickSort(arra, left, index -1);
      quickSort(arra, index+1, right);
     }

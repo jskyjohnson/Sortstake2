@@ -29,6 +29,9 @@ public abstract class Sort{
          }else{
          }
          break;
+       case 2:
+         blocks.highlightPivot(commands.get(looking).a);
+         //System.out.println("STUFF");
        default:
       }
       }catch (Exception e){
