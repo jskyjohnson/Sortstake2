@@ -34,13 +34,9 @@ class Blocklist{
  //getMethods SHOULD NOT EDIT ANYTHING
  ArrayList<Float> getValueList(){
   ArrayList<Float> toreturn = new ArrayList<Float>();
-  String k = "";
-  String l = "";
   for(Block block : blocks){
-   toreturn.add(block.getValue()); 
-   k+= block.getValue() + " : ";
+   toreturn.add(-1*block.getValue()); 
   }
-  System.out.println(k);
   return toreturn;
  }
  boolean getCanSwap(int a, int b){ //Checks if two blocks can be swapped
@@ -104,7 +100,15 @@ class Blocklist{
    
  }
  
+ void highlightPivot(int a){ // highlights pivot block
+   for(Block block : blocks){
+     block.resetColor();
+   }
+   blocks.get(a).highlight();
+ }
+ 
  void shuffleblocks(){ //shuffleblocks should randomly shuffle the blocks
+   
    for(int i = 0; i < blocks.size(); i++){
      int index = (int)random(blocks.size());
      float tempx1 = blocks.get(index).getX();
@@ -116,6 +120,13 @@ class Blocklist{
      blocks.set(index, blocks.get(i));
      blocks.set(i, temp);
    }
+ }
+ 
+ void printBlocks(){
+  for(int i = 0; i < blocks.size(); i++){
+    System.out.print(" " + blocks.get(i).getValue());
+  }
+  System.out.println();
  }
  
  

@@ -19,8 +19,6 @@ public abstract class Sort{
   
   //non-graphical update, no graphical update method should be needed for sorts
   void update(){ //commands and stuff
-    //System.out.println(this.commands.get(this.currentcommand));
-   
     if(!sorted){ // checks to see if it's sorted, if it is, will not run the command
       try{
       int looking = commands.get(currentcommand).getType(); // gets the type of command, 1 is a swap command, 
@@ -29,19 +27,21 @@ public abstract class Sort{
          if(this.blocks.swapblock(commands.get(this.currentcommand).a,commands.get(this.currentcommand).b)){ // if it returns true, will go to the next command
              this.nextCommand(); // increase the current command
          }else{
-         // System.out.println("PARTY"); 
          }
          break;
+       case 2:
+         blocks.highlightPivot(commands.get(looking).a);
+         //System.out.println("STUFF");
        default:
       }
       }catch (Exception e){
-       
+       System.out.println("You killed it!!");
       }
     }
   }
   //Generation of arraylist must be done inside abstract
   
-  void canNextCommand(){
+  void canNextCommand(){ //updates boolean can next command.
     if(currentcommand + 1 == commands.size()){
      sorted = true; 
     }

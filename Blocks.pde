@@ -8,8 +8,10 @@ class Block{
   //BOOLEAN VALUES
   boolean canBeMoved;  //value for if the block is in movement.
   boolean isMoved; // check value of isMoving
+  boolean delay;
   float newposition;
-  float speed = 10;
+  float speed = 15;
+  int delaycounter;
   color thiscolor;
   Block(){ //default constructor
     x = 0 ;
@@ -20,6 +22,8 @@ class Block{
     isMoved = false;
     canBeMoved = true;
     thiscolor = color(255, 255, 255);
+    delay = false;
+    delaycounter = 2;
   }
  
   Block(float ax, float ay, float asize, float avalue){  //input constructor
@@ -29,17 +33,36 @@ class Block{
    value = avalue;
    newposition = x;
    isMoved = false;
+   delay = false;
+   delaycounter = 2;
    canBeMoved = true;
    thiscolor = color(255, 255, 255);
   }
   //DEFUALT METHODS
   void update(){ //void non-graphical update
     if(newposition > x){
+      delay = true;
       thiscolor = color(255, 130, 130);
-     x+= speed; 
+     if(x + speed > newposition){
+      x++; 
+     }else{
+      x+= speed; 
+     }
     }else if(newposition < x){
+      delay = true;
       thiscolor = color(255, 130, 130);
-     x-=speed;
+      if(x - speed < newposition){
+       x--; 
+      }else{
+       x-=speed;
+      }
+     
+    }else if(delay){
+      delaycounter--;
+      if(delaycounter < 0){
+       delaycounter = 2;
+       delay = false;
+      }
     }else{
       isMoved = false;
       canBeMoved = true;
@@ -52,7 +75,7 @@ class Block{
      fill(thiscolor);
      rect(0,0,size,value);
      textSize(8);
-     text((int)value,0,10);
+     //text((int)value,0,10);
      fill(color(255,255,255));
     popMatrix();
   }
@@ -65,6 +88,9 @@ class Block{
     
   }
   //GET METHODS, SHOULD ONLY RETURN VALUES
+  String getString(){
+   return " "+value; 
+  }
   float getValue(){
     return value;
   }
@@ -86,6 +112,12 @@ class Block{
   }
   void setPosition(float a){
     newposition = a;
+  }
+  void resetColor(){
+   thiscolor = color(255,255,255); 
+  }
+  void highlight(){
+   thiscolor = color(130,130,130); 
   }
   
 }

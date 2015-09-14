@@ -2,7 +2,7 @@
 class Quicksort extends Sort{
   //See sort abstract
   //only swaps the two first places.
-  public ArrayList<Float> tempFloatList = super.blocks.getValueList();
+  
   ArrayList<Command> commandlist;
   Quicksort(Blocklist datain){
     super(datain);
@@ -10,52 +10,67 @@ class Quicksort extends Sort{
   }
   
   ArrayList<Command> generateCommands(Blocklist datain){ // generates the list of commands. This is where the list will be generated.
-    commandlist = new ArrayList<Command>();
-    quickSort(0, blocks.getSize() -1); 
+    commandlist = new ArrayList<Command>(); // creates the COMMAND list, 
+    ArrayList<Float> tempFloatListArraylist = super.blocks.getValueList();
+    float[] floatarray = generateFloatArray(tempFloatListArraylist);
+    quickSort(floatarray ,0, blocks.getSize() -1); // initializing the recursive sort command on the float array
     return commandlist;
-}
-
-  void quickSort(int left, int right){
-   int index = partition( left, right);
-   if(tempFloatList.get(left) < tempFloatList.get(index -1)){
-    quickSort(left,index - 1);
-   }
-   if(tempFloatList.get(index) < tempFloatList.get(right)){
-    quickSort(index, right); 
-   }
   }
-
-  int partition( int left, int right){
+  
+  float[] generateFloatArray(ArrayList<Float> indata){ // turns a bunch of floats in an arraylist into a bunch of floats in an array
+   float[] newArray = new float[indata.size()];
+   for(int i = 0; i < indata.size(); i ++){
+     newArray[i] = indata.get(i);
+   }
+   return newArray;
+  }
+  
+  void swap(int a, int b, float[] array){ // a method to swap two values in an array
+    float temp = 0.0;
+    commandlist.add(new Command(a, b, 1)); //ADDS THE SWAP COMMAND to the command list
+    temp = array[a];
+    array[a] = array[b];
+    array[b] = temp;
     
-    int leftindex = left;
-    int rightindex = right;
-    float temp;
-    int pivot = (left+right)/2;
-    System.out.println("What");
-    while(leftindex <= rightindex){
-      System.out.println("Whileing");
-     while(tempFloatList.get(leftindex) < tempFloatList.get(pivot)){
-      leftindex++; 
-     }
-     while(tempFloatList.get(rightindex) > tempFloatList.get(pivot)){
-      rightindex--; 
-     }
-     if(tempFloatList.get(leftindex)<=tempFloatList.get(rightindex)){
-       
-       System.out.println("BLAH BLAH BLAH");
-       temp = tempFloatList.get(leftindex);
-       tempFloatList.set( leftindex, tempFloatList.get(rightindex));
-       tempFloatList.set(rightindex, temp);
-       commandlist.add(new Command(leftindex, rightindex, 1));
-       leftindex++;
-       rightindex--;
-       
-     }
-    };
-    if(leftindex<0){
-     System.out.println("leftindex less than 0");
-     
+  }
+  
+  void quickSort(float[] arra,int left, int right){//quick sort algorithm initial
+  if(left < right){
+     int index = partition( arra,left, right);
+    // commandlist.add(new Command(index, 2));
+     quickSort(arra, left, index -1);
+     quickSort(arra, index+1, right);
     }
-    return pivot;
+  }
+  
+  int partition( float[] arra,int left, int right){ // parition method of the quicksort style algorithm
+    int m = (left + right) / 2;
+    swap(left, m, arra);
+    float pivot = arra[left];
+    int lo = left + 1;
+    int hi = right;
+    while(lo <= hi){
+     while(arra[hi] > pivot){
+      hi --; 
+     }
+     while(lo <= hi && arra[lo] <= pivot){
+      lo++; 
+     }
+     if(lo <= hi){
+      swap(lo, hi, arra);
+      lo++;
+      hi--;
+      }
+    }
+    swap(left, hi, arra);
+    return hi;
+  }
+  
+  String printLineArray(float[] indata){ // returns a string of an array
+   String k = "";
+   for(int i = 0; i < indata.length; i++){
+    k += " " + indata[i]; 
+   }
+   return k;
   }
 }
