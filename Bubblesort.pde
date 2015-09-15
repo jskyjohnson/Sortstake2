@@ -6,6 +6,7 @@ class Bubblesort extends Sort{
     super(datain);
     super.commands = generateCommands(datain);
     System.out.println(super.commands);
+    
   }
   
   void update(){ //commands and stuff
@@ -32,5 +33,23 @@ class Bubblesort extends Sort{
       }
     }
     return commandlist;
+  }
+  public void swap(int a, int b, float[] array) {
+    
+  }
+  public void swapAllBlocks(float[] array) {
+    boolean swapMade = true;
+    while (swapMade) {
+      swapMade = false;
+      int index = 0;
+      while (index < array.length) {
+        if (array[index] > array[index + 1]) {
+          float tempValue = array[index];
+          array[index] = array[index + 1];
+          array[index + 1] = tempValue;
+          swapMade = true;
+        }
+      }
+    }
   }
 }
