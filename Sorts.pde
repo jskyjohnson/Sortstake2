@@ -35,6 +35,11 @@ public abstract class Sort{
          break;
        case 3:
          System.out.println("TEST SUCSESSFULL [sic]");
+         commands.set(currentcommand, new Command(0,0,4));
+         break;
+       case 4:
+       
+         break;
        default:
       }
       }catch (Exception e){

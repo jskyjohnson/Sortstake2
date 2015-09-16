@@ -6,12 +6,13 @@ Blocklist blocklist;
 Sort sortobject; //Sort objects
 
 //Universal Values
-int SIZEX = 500;
-int SIZEY = 500;
-float MOVEABLESIZEX; //Areas that blocks can be drawn in
-float MOVEABLESIZEY; //Area that blocks can be drawn in
-float PADDINGX = 50; // Padding around True area, and drawable area
-float PADDINGY = 50;
+static int SIZEX = 500;
+static int SIZEY = 500;
+static int NUMBERBLOCKS = 20;
+static float MOVEABLESIZEX; //Areas that blocks can be drawn in
+static float MOVEABLESIZEY; //Area that blocks can be drawn in
+static float PADDINGX = 50; // Padding around True area, and drawable area
+static float PADDINGY = 50;
 //Boolean checks
 
 
@@ -24,7 +25,7 @@ void setup(){
   MOVEABLESIZEY = SIZEY - PADDINGY;
   
  blocklist = new Blocklist();
- blocklist.generate(20);  //Generate blocklist values CANNOT EXCED MOVEABLESIZEX
+ blocklist.generate(NUMBERBLOCKS);  //Generate blocklist values CANNOT EXCED MOVEABLESIZEX
  blocklist.shuffleblocks(); //Shuffles block list to be random
  
  /*
@@ -34,7 +35,11 @@ void setup(){
  | |__| |_| | |\  | |\  | |_| |  _ < 
   \____\___/|_| \_|_| \_|\___/|_| \_\
  */
+<<<<<<< HEAD
  sortobject = new SelectionSort(blocklist); // CHANGE THIS OBJECT TO CHANGE WHAT KIND OF SORT, we will ad a selection menu for the kinds of sorts later
+=======
+ sortobject = new Mergesort(blocklist); // CHANGE THIS OBJECT TO CHANGE WHAT KIND OF SORT, we will ad a selection menu for the kinds of sorts later
+>>>>>>> eb1d193abb64dee89882731a31de648fef31e249
  
  
 }
