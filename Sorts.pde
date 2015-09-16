@@ -32,6 +32,9 @@ public abstract class Sort{
        case 2:
          blocks.highlightPivot(commands.get(looking).a);
          //System.out.println("STUFF");
+         break;
+       case 3:
+         System.out.println("TEST SUCSESSFULL [sic]");
        default:
       }
       }catch (Exception e){
@@ -61,3 +64,11 @@ public abstract class Sort{
     return true;
   }
 }
+
+public static String printLineArray(float[] indata){ // returns a string of an array
+   String k = "";
+   for(int i = 0; i < indata.length; i++){
+    k += " " + indata[i]; 
+   }
+   return k;
+ }

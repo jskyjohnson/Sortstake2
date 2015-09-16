@@ -12,30 +12,32 @@ class Bubblesort extends Sort{
   
   ArrayList<Command> generateCommands(Blocklist datain){ // generates the list of commands. This is where the list will be generated.
     ArrayList<Command> commandlist = new ArrayList<Command>();
-    boolean notSorted = true;
-    while(notSorted){
+    //commandlist.add(new Command(0, 0, 3));
+    ArrayList<Float> tempFloatListArraylist = super.blocks.getValueList();
+    float[] floatarray = generateFloatArray(tempFloatListArraylist);
+     //System.out.println(printLineArray(floatarray));
      // commandlist.add(new Command(0,1,1));
-      if(commandlist.size() > 10){
-       ArrayList<Float> tempFloatListArraylist = super.blocks.getValueList();
-       float[] floatarray = generateFloatArray(tempFloatListArraylist);
-      }
-    }
+       swapAllBlocks(floatarray,commandlist);
+       System.out.println("Swap Finished");
+       System.out.println(commandlist);
     return commandlist;
   }
   
-  public void swapAllBlocks(float[] array) {
+  public void swapAllBlocks(float[] array,ArrayList<Command> commandin) {
     boolean swapMade = true;
     while (swapMade) {
       swapMade = false;
       int index = 0;
-      while (index < array.length) {
+      while (index < array.length -1 ) {
         if (array[index] > array[index + 1]) {
+          System.out.println(array[index]+" "+array[index+1]);
           float tempValue = array[index];
-          commandlist.add(new Command(index, index+1, 1));
+          commandin.add(new Command(index, index+1, 1));
           array[index] = array[index + 1];
           array[index + 1] = tempValue;
           swapMade = true;
         }
+       index ++;
       }
     }
   }

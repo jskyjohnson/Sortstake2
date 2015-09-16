@@ -64,12 +64,4 @@ class Quicksort extends Sort{
     swap(left, hi, arra);
     return hi;
   }
-  
-  String printLineArray(float[] indata){ // returns a string of an array
-   String k = "";
-   for(int i = 0; i < indata.length; i++){
-    k += " " + indata[i]; 
-   }
-   return k;
-  }
 }
