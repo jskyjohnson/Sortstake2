@@ -11,9 +11,12 @@ class Mergesort extends Sort{
   
   ArrayList<Command> generateCommands(Blocklist datain){ // generates the list of commands. This is where the list will be generated.
     commandlist = new ArrayList<Command>(); // creates the COMMAND list, 
+    commandlist.add(new Command(0,0,3));
     ArrayList<Float> tempFloatListArraylist = super.blocks.getValueList();
     float[] floatarray = generateFloatArray(tempFloatListArraylist);
-    mergesort(floatarray); // initializing the recursive sort command on the float array
+    System.out.println(printLineArray(floatarray));
+    mergesort(floatarray, 0); // initializing the recursive sort command on the float array
+    System.out.println(printLineArray(floatarray));
     return commandlist;
   }
   
@@ -27,7 +30,7 @@ class Mergesort extends Sort{
   
   void swap(int a, int b, float[] array){ // a method to swap two values in an array
     float temp = 0.0;
-    commandlist.add(new Command(a, b, 1)); //ADDS THE SWAP COMMAND to the command listyo
+   // commandlist.add(new Command(a, b, 1)); //ADDS THE SWAP COMMAND to the command listyo
     temp = array[a];
     array[a] = array[b];
     array[b] = temp; 
@@ -43,15 +46,15 @@ class Mergesort extends Sort{
     return k;
   }
   
-  void mergesort(float[] array){
+  void mergesort(float[] array, int instart){
     System.out.println("Splitting" + printLineArray(array));
     if( array.length > 1){
       int mid = array.length/2;
       float[] arra1 =this.arrayGen(0,mid,array);
       float[] arra2 = arrayGen(mid, array.length, array);
       
-      mergesort(arra1);
-      mergesort(arra2);
+      mergesort(arra1, instart);
+      mergesort(arra2, instart+mid);
       
       int i = 0;
       int j = 0;
@@ -79,8 +82,7 @@ class Mergesort extends Sort{
             j++;
             k++;
             System.out.println("Merging "+printLineArray(array));
-        }
-      
+      }      
     }
   }
   
