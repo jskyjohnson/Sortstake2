@@ -34,7 +34,7 @@ void setup(){
  | |__| |_| | |\  | |\  | |_| |  _ < 
   \____\___/|_| \_|_| \_|\___/|_| \_\
  */
- sortobject = new Bubblesort(blocklist); // CHANGE THIS OBJECT TO CHANGE WHAT KIND OF SORT, we will ad a selection menu for the kinds of sorts later
+ sortobject = new SelectionSort(blocklist); // CHANGE THIS OBJECT TO CHANGE WHAT KIND OF SORT, we will ad a selection menu for the kinds of sorts later
  
  
 }
