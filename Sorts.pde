@@ -34,10 +34,31 @@ public abstract class Sort{
          //System.out.println("STUFF");
          break;
        case 3:
-         System.out.println("TEST SUCSESSFULL [sic]");
+         System.out.println("TEST SUCSESSFULL [sic] i really like penis");
          commands.set(currentcommand, new Command(0,0,4));
          break;
        case 4:
+       
+         break;
+        case 5: //Insert
+         if(this.blocks.swapblock(commands.get(this.currentcommand).b,commands.get(this.currentcommand).b -1)){ // if it returns true, will go to the next command
+            if(commands.get(this.currentcommand).b == commands.get(this.currentcommand).a){
+              this.nextCommand();
+            }else{
+             if(commands.get(this.currentcommand).b > commands.get(this.currentcommand).a){
+               commands.get(this.currentcommand).setB(commands.get(this.currentcommand).b -1);
+             }else if(commands.get(this.currentcommand).a > commands.get(this.currentcommand).b){
+               commands.get(this.currentcommand).setA(commands.get(this.currentcommand).a -1);
+             }else{
+              System.out.println("THIS SHOULD NOT HAPPEN"); 
+             }
+            }
+         }else{
+          
+         }
+         break;
+         case 6: // set
+           this.blocks.setBlock(commands.get(this.currentcommand).a, this.blocks.getBlock(commands.get(this.currentcommand).a));
        
          break;
        default:

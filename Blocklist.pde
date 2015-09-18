@@ -122,6 +122,10 @@ class Blocklist{
    }
  }
  
+ Block setBlock(int i, Block k){
+   return blocks.set(i, k);
+ }
+ 
  void printBlocks(){
   for(int i = 0; i < blocks.size(); i++){
     System.out.print(" " + blocks.get(i).getValue());

@@ -30,4 +30,10 @@ class Command{ //values for a command
   int getType(){
    return type; 
   }
+  void setB(int ab){
+    b = ab;
+  }
+  void setA(int aa){
+   a = aa; 
+  }
 }

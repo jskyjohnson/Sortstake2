@@ -60,7 +60,7 @@ class Mergesort extends Sort{
     return k;
   }
   
-  void doswap(float a, float b, int ain, int bin){
+  void doswap(float a, float b){
     int temp1 = 0;
     int temp2 = 0;
    for(int i = 0; i < tempFloatListArraylist.size(); i++){
@@ -73,11 +73,26 @@ class Mergesort extends Sort{
        temp2 = i;
      }
    }
+   
+   commandlist.add(new Command(temp1, temp2, 6));
+   tempFloatListArraylist.set(temp1, b);
      //commandlist.add(new Command(temp1, temp2, 1));
-   tempFloatListArraylist.set(ain,b);
-   //float temp = tempFloatListArraylist.get(temp1);
-   //tempFloatListArraylist.set(temp1, b);
-   //tempFloatListArraylist.set(temp2, temp);
+   //while(temp1 != temp2){
+   // if(temp1 < temp2){
+   //   //commandlist.add(new Command(temp2, temp2 -1, 1));
+   //   float temp = tempFloatListArraylist.get(temp1);
+   //   tempFloatListArraylist.set(temp1, tempFloatListArraylist.get(temp1+1));
+   //   tempFloatListArraylist.set(temp1+1, temp);
+   //   temp1++;
+   // }
+   // if(temp2 < temp1){
+   //   //commandlist.add(new Command(temp1, temp1 -1, 1));
+   //   float temp = tempFloatListArraylist.get(temp2);
+   //   tempFloatListArraylist.set(temp2, tempFloatListArraylist.get(temp2+1));
+   //   tempFloatListArraylist.set(temp2+1, temp);
+   //   temp2++;
+   // }
+   //}
   }
  
   void mergesort(float[] array, int instart){
@@ -98,12 +113,12 @@ class Mergesort extends Sort{
       while( i < arra1.length && j < arra2.length){
         if(arra1[i] < arra2[j]){
          
-          doswap(array[k], arra1[i],instart+k,instart+i);
+          doswap(array[k], arra1[i]);
           array[k] = arra1[i];
           i++;
         }else{
           
-         doswap(array[k], arra2[j],instart+k,instart+j);
+         doswap(array[k], arra2[j]);
          array[k] = arra2[j];
        
          j++;
@@ -112,13 +127,13 @@ class Mergesort extends Sort{
       }
       while(i < arra1.length){
          
-         doswap(array[k], arra1[i],instart+k,instart+j);
+         doswap(array[k], arra1[i]);
          array[k]=arra1[i];
          i++;
          k++;
       }
         while( j < arra2.length){
-          doswap(array[k], arra2[j],instart+k,instart+j);
+          doswap(array[k], arra2[j]);
           array[k]=arra2[j];
           j++;
           k++;
