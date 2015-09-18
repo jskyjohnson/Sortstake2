@@ -35,11 +35,9 @@ void setup(){
  | |__| |_| | |\  | |\  | |_| |  _ < 
   \____\___/|_| \_|_| \_|\___/|_| \_\
  */
-<<<<<<< HEAD
- sortobject = new SelectionSort(blocklist); // CHANGE THIS OBJECT TO CHANGE WHAT KIND OF SORT, we will ad a selection menu for the kinds of sorts later
-=======
  sortobject = new Mergesort(blocklist); // CHANGE THIS OBJECT TO CHANGE WHAT KIND OF SORT, we will ad a selection menu for the kinds of sorts later
->>>>>>> eb1d193abb64dee89882731a31de648fef31e249
+// CHANGE THIS OBJECT TO CHANGE WHAT KIND OF SORT, we will ad a selection menu for the kinds of sorts later
+
  
  
 }
