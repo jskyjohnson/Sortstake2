@@ -34,7 +34,7 @@ public abstract class Sort{
          //System.out.println("STUFF");
          break;
        case 3:
-         System.out.println("TEST SUCSESSFULL [sic] i really like penis");
+         System.out.println("TEST SUCSESSFULL [sic]");
          commands.set(currentcommand, new Command(0,0,4));
          break;
        case 4:
@@ -58,8 +58,9 @@ public abstract class Sort{
          }
          break;
          case 6: // set
-           this.blocks.setBlock(commands.get(this.currentcommand).a, this.blocks.getBlock(commands.get(this.currentcommand).a));
-       
+           //this.blocks.setBlock(commands.get(this.currentcommand).a, this.blocks.getBlock(commands.get(this.currentcommand).a));
+          // Block temp = this.blocks.getBlock(3).clone();
+           //this.blocks.setBlock(1, temp );
          break;
        default:
       }

@@ -16,7 +16,9 @@ class Mergesort extends Sort{
     tempFloatListArraylist = super.blocks.getValueList();
     float[] floatarray = generateFloatArray(tempFloatListArraylist);
     System.out.println(printLineArray(floatarray));
-    mergesort(floatarray, 0); // initializing the recursive sort command on the float array
+    
+    mergesort(floatarray); // initializing the recursive sort command on the float array
+    
     commandlist.add(new Command(0,0,3));
     System.out.println("array" + printLineArray(floatarray));
     System.out.println("Arraylist"+printLineArrayList(tempFloatListArraylist));
@@ -60,7 +62,24 @@ class Mergesort extends Sort{
     return k;
   }
   
-  void doswap(float a, float b){
+  void insertto(int a, int b){
+    int temp1 = a;
+    int temp2 = b;
+   if(temp1 < temp2){
+    while(temp1 < temp2){
+     commandlist.add(new Command(temp2, temp2-1, 1));
+     temp2--;
+    }
+   }
+   if(temp2 < temp1){
+     while(temp2 < temp1){
+     commandlist.add(new Command(temp1, temp1-1, 1));
+     temp1--;
+    }
+   } 
+  }
+  
+  void doswap(float a, float b){ // only for commandlist stuff
     int temp1 = 0;
     int temp2 = 0;
    for(int i = 0; i < tempFloatListArraylist.size(); i++){
@@ -73,73 +92,125 @@ class Mergesort extends Sort{
        temp2 = i;
      }
    }
-   
-   commandlist.add(new Command(temp1, temp2, 6));
-   tempFloatListArraylist.set(temp1, b);
-     //commandlist.add(new Command(temp1, temp2, 1));
-   //while(temp1 != temp2){
-   // if(temp1 < temp2){
-   //   //commandlist.add(new Command(temp2, temp2 -1, 1));
-   //   float temp = tempFloatListArraylist.get(temp1);
-   //   tempFloatListArraylist.set(temp1, tempFloatListArraylist.get(temp1+1));
-   //   tempFloatListArraylist.set(temp1+1, temp);
-   //   temp1++;
-   // }
-   // if(temp2 < temp1){
-   //   //commandlist.add(new Command(temp1, temp1 -1, 1));
-   //   float temp = tempFloatListArraylist.get(temp2);
-   //   tempFloatListArraylist.set(temp2, tempFloatListArraylist.get(temp2+1));
-   //   tempFloatListArraylist.set(temp2+1, temp);
-   //   temp2++;
-   // }
-   //}
-  }
- 
-  void mergesort(float[] array, int instart){
-    //System.out.println("Splitting" + printLineArray(array));
-    if( array.length > 1){
-      //System.out.println(instart);
-      int mid = array.length/2;
-      float[] arra1 = arrayGen(0,mid,array);
-      float[] arra2 = arrayGen(mid, array.length, array);
-      
-      mergesort(arra1, instart);
-      mergesort(arra2, instart+mid);
-      
-      int i = 0;
-      int j = 0;
-      int k = 0;
-      
-      while( i < arra1.length && j < arra2.length){
-        if(arra1[i] < arra2[j]){
-         
-          doswap(array[k], arra1[i]);
-          array[k] = arra1[i];
-          i++;
-        }else{
-          
-         doswap(array[k], arra2[j]);
-         array[k] = arra2[j];
-       
-         j++;
-        }
-        k++;
-      }
-      while(i < arra1.length){
-         
-         doswap(array[k], arra1[i]);
-         array[k]=arra1[i];
-         i++;
-         k++;
-      }
-        while( j < arra2.length){
-          doswap(array[k], arra2[j]);
-          array[k]=arra2[j];
-          j++;
-          k++;
-      }      
+   if(temp1 < temp2){
+    while(temp1 < temp2){
+     commandlist.add(new Command(temp2, temp2-1, 1));
+     temp2--;
     }
+   }
+   if(temp2 < temp1){
+     while(temp2 < temp1){
+     commandlist.add(new Command(temp1, temp1-1, 1));
+     temp1--;
+    }
+   }
   }
+  
+  float[] array;
+  int lengtharray;
+  float[] tempMergArr;
+   public void mergesort(float inputArr[]) {
+        this.array = inputArr;
+        this.lengtharray = inputArr.length;
+        this.tempMergArr = new float[lengtharray];
+        doMergeSort(0, lengtharray - 1);
+    }
+ 
+    private void doMergeSort(int lowerIndex, int higherIndex) {
+         
+        if (lowerIndex < higherIndex) {
+            int middle = lowerIndex + (higherIndex - lowerIndex) / 2;
+            // Below step sorts the left side of the array
+            doMergeSort(lowerIndex, middle);
+            // Below step sorts the right side of the array
+            doMergeSort(middle + 1, higherIndex);
+            // Now merge both sides
+            mergeParts(lowerIndex, middle, higherIndex);
+        }
+    }
+ 
+    void mergeParts(int lowerIndex, int middle, int higherIndex) {
+ 
+        for (int i = lowerIndex; i <= higherIndex; i++) {
+            tempMergArr[i] = array[i];
+            tempFloatListArraylist.set(i, array[i]);
+        }
+        int i = lowerIndex;
+        int j = middle + 1;
+        int k = lowerIndex;
+        while (i <= middle && j <= higherIndex) {
+            if (tempMergArr[i] <= tempMergArr[j]) {
+                //doswap(array[k], tempMergArr[i]);
+                insertto(k,i);
+                commandlist.add(new Command(k,i,1));
+                tempFloatListArraylist.set(k, tempMergArr[i]);
+                array[k] = tempMergArr[i];
+                i++;
+            } else {
+               // doswap(array[k], tempMergArr[j]);
+                insertto(k,j);
+                tempFloatListArraylist.set(k, tempMergArr[j]);
+                
+                array[k] = tempMergArr[j];
+                j++;
+            }
+            k++;
+        }
+        while (i <= middle) {
+           // doswap(array[k], tempMergArr[i]);
+            insertto(k,i);
+            tempFloatListArraylist.set(k, tempMergArr[i]);
+            array[k] = tempMergArr[i];
+            k++;
+            i++;
+        }
+ 
+    }
+  //void mergesort(float[] array, int instart){
+  //  //System.out.println("Splitting" + printLineArray(array));
+  //  if( array.length > 1){
+  //    //System.out.println(instart);
+  //    int mid = array.length/2;
+  //    float[] arra1 = arrayGen(0,mid,array);
+  //    float[] arra2 = arrayGen(mid, array.length, array);
+      
+  //    mergesort(arra1, instart);
+  //    mergesort(arra2, instart+mid);
+      
+  //    int i = 0;
+  //    int j = 0;
+  //    int k = 0;
+      
+  //    while( i < arra1.length && j < arra2.length){
+  //      if(arra1[i] < arra2[j]){
+         
+  //        doswap(array[k], arra1[i], instart);
+  //        array[k] = arra1[i];
+  //        i++;
+  //      }else{
+          
+  //       doswap(array[k], arra2[j], instart);
+  //       array[k] = arra2[j];
+       
+  //       j++;
+  //      }
+  //      k++;
+  //    }
+  //    while(i < arra1.length){
+         
+  //       doswap(array[k], arra1[i], instart);
+  //       array[k]=arra1[i];
+  //       i++;
+  //       k++;
+  //    }
+  //      while( j < arra2.length){
+  //        doswap(array[k], arra2[j], instart);
+  //        array[k]=arra2[j];
+  //        j++;
+  //        k++;
+  //    }      
+  //  }
+  //}
   
    
   String printLineArray(float[] indata){ //returns a string of an array
