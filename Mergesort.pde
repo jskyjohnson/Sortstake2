@@ -63,8 +63,8 @@ class Mergesort extends Sort{
   }
   
   void insertto(int a, int b){
-    int temp1 = a;
-    int temp2 = b;
+   int temp1 = a;
+   int temp2 = b;
    if(temp1 < temp2){
     while(temp1 < temp2){
      commandlist.add(new Command(temp2, temp2-1, 1));
@@ -76,7 +76,7 @@ class Mergesort extends Sort{
      commandlist.add(new Command(temp1, temp1-1, 1));
      temp1--;
     }
-   } 
+   }
   }
   
   void doswap(float a, float b){ // only for commandlist stuff
@@ -130,7 +130,7 @@ class Mergesort extends Sort{
     }
  
     void mergeParts(int lowerIndex, int middle, int higherIndex) {
- 
+      System.out.println(lowerIndex + " "+ middle+" "+higherIndex);
         for (int i = lowerIndex; i <= higherIndex; i++) {
             tempMergArr[i] = array[i];
             tempFloatListArraylist.set(i, array[i]);
@@ -159,59 +159,12 @@ class Mergesort extends Sort{
         while (i <= middle) {
            // doswap(array[k], tempMergArr[i]);
             insertto(k,i);
-            tempFloatListArraylist.set(k, tempMergArr[i]);
+            //tempFloatListArraylist.set(k, tempMergArr[i]);
             array[k] = tempMergArr[i];
             k++;
             i++;
         }
- 
     }
-  //void mergesort(float[] array, int instart){
-  //  //System.out.println("Splitting" + printLineArray(array));
-  //  if( array.length > 1){
-  //    //System.out.println(instart);
-  //    int mid = array.length/2;
-  //    float[] arra1 = arrayGen(0,mid,array);
-  //    float[] arra2 = arrayGen(mid, array.length, array);
-      
-  //    mergesort(arra1, instart);
-  //    mergesort(arra2, instart+mid);
-      
-  //    int i = 0;
-  //    int j = 0;
-  //    int k = 0;
-      
-  //    while( i < arra1.length && j < arra2.length){
-  //      if(arra1[i] < arra2[j]){
-         
-  //        doswap(array[k], arra1[i], instart);
-  //        array[k] = arra1[i];
-  //        i++;
-  //      }else{
-          
-  //       doswap(array[k], arra2[j], instart);
-  //       array[k] = arra2[j];
-       
-  //       j++;
-  //      }
-  //      k++;
-  //    }
-  //    while(i < arra1.length){
-         
-  //       doswap(array[k], arra1[i], instart);
-  //       array[k]=arra1[i];
-  //       i++;
-  //       k++;
-  //    }
-  //      while( j < arra2.length){
-  //        doswap(array[k], arra2[j], instart);
-  //        array[k]=arra2[j];
-  //        j++;
-  //        k++;
-  //    }      
-  //  }
-  //}
-  
    
   String printLineArray(float[] indata){ //returns a string of an array
    String k = "";
