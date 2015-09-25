@@ -8,7 +8,7 @@ Sort sortobject; //Sort objects
 //Universal Values
 static int SIZEX = 500;
 static int SIZEY = 500;
-static int NUMBERBLOCKS = 8;
+static int NUMBERBLOCKS = 40;
 static float MOVEABLESIZEX; //Areas that blocks can be drawn in
 static float MOVEABLESIZEY; //Area that blocks can be drawn in
 static float PADDINGX = 50; // Padding around True area, and drawable area

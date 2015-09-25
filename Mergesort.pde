@@ -62,49 +62,39 @@ class Mergesort extends Sort{
     return k;
   }
   
-  void insertto(int a, int b){
-   int temp1 = a;
-   int temp2 = b;
-   if(temp1 < temp2){
-    while(temp1 < temp2){
-     commandlist.add(new Command(temp2, temp2-1, 1));
-     temp2--;
+  void insertto(int a, float b){ //Find Value B and instert it to A
+   int indexB = -1;
+   for(int i = 0; i < tempFloatListArraylist.size(); i++){
+     //System.out.println(tempFloatListArraylist.get(i) + " "+ b);
+     if(tempFloatListArraylist.get(i) == b){
+       indexB = i;
+     }
+   }
+   if(indexB == -1){
+    System.out.println("CANNOT FIND indexB " + b);
+    System.out.println(printLineArrayList(tempFloatListArraylist));
+   }
+   if(a < indexB){
+    while(a < indexB){
+      float temp = tempFloatListArraylist.get(indexB);
+      tempFloatListArraylist.set(indexB, tempFloatListArraylist.get(indexB-1));
+      tempFloatListArraylist.set(indexB-1, temp);
+     commandlist.add(new Command(indexB, indexB-1, 1));
+     indexB--;
     }
    }
-   if(temp2 < temp1){
-     while(temp2 < temp1){
-     commandlist.add(new Command(temp1, temp1-1, 1));
-     temp1--;
+   if(indexB < a){
+     while(indexB < a){
+     float temp = tempFloatListArraylist.get(indexB);
+     tempFloatListArraylist.set(indexB, tempFloatListArraylist.get(indexB+1));
+     tempFloatListArraylist.set(indexB+1, temp);
+     commandlist.add(new Command(indexB, indexB+1, 1));
+     indexB++;
     }
    }
   }
   
-  void doswap(float a, float b){ // only for commandlist stuff
-    int temp1 = 0;
-    int temp2 = 0;
-   for(int i = 0; i < tempFloatListArraylist.size(); i++){
-     if(tempFloatListArraylist.get(i).equals(a)){
-       temp1 = i;
-     }
-   }
-   for(int i = 0; i < tempFloatListArraylist.size(); i++){
-     if(tempFloatListArraylist.get(i).equals(b)){
-       temp2 = i;
-     }
-   }
-   if(temp1 < temp2){
-    while(temp1 < temp2){
-     commandlist.add(new Command(temp2, temp2-1, 1));
-     temp2--;
-    }
-   }
-   if(temp2 < temp1){
-     while(temp2 < temp1){
-     commandlist.add(new Command(temp1, temp1-1, 1));
-     temp1--;
-    }
-   }
-  }
+
   
   float[] array;
   int lengtharray;
@@ -130,7 +120,7 @@ class Mergesort extends Sort{
     }
  
     void mergeParts(int lowerIndex, int middle, int higherIndex) {
-      System.out.println(lowerIndex + " "+ middle+" "+higherIndex);
+     // System.out.println(lowerIndex + " "+ middle+" "+higherIndex);
         for (int i = lowerIndex; i <= higherIndex; i++) {
             tempMergArr[i] = array[i];
             tempFloatListArraylist.set(i, array[i]);
@@ -141,15 +131,14 @@ class Mergesort extends Sort{
         while (i <= middle && j <= higherIndex) {
             if (tempMergArr[i] <= tempMergArr[j]) {
                 //doswap(array[k], tempMergArr[i]);
-                insertto(k,i);
-                commandlist.add(new Command(k,i,1));
-                tempFloatListArraylist.set(k, tempMergArr[i]);
+                insertto(k,tempMergArr[i]);
+                //tempFloatListArraylist.set(k, tempMergArr[i]);
                 array[k] = tempMergArr[i];
                 i++;
             } else {
                // doswap(array[k], tempMergArr[j]);
-                insertto(k,j);
-                tempFloatListArraylist.set(k, tempMergArr[j]);
+                insertto(k,tempMergArr[j]);
+                //tempFloatListArraylist.set(k, tempMergArr[j]);
                 
                 array[k] = tempMergArr[j];
                 j++;
@@ -158,7 +147,7 @@ class Mergesort extends Sort{
         }
         while (i <= middle) {
            // doswap(array[k], tempMergArr[i]);
-            insertto(k,i);
+            insertto(k,tempMergArr[i]);
             //tempFloatListArraylist.set(k, tempMergArr[i]);
             array[k] = tempMergArr[i];
             k++;
@@ -180,4 +169,32 @@ class Mergesort extends Sort{
    }
    return k;
   }
+  
+  
+    //void doswap(float a, float b){ // only for commandlist stuff
+  //  int temp1 = 0;
+  //  int temp2 = 0;
+  // for(int i = 0; i < tempFloatListArraylist.size(); i++){
+  //   if(tempFloatListArraylist.get(i).equals(a)){
+  //     temp1 = i;
+  //   }
+  // }
+  // for(int i = 0; i < tempFloatListArraylist.size(); i++){
+  //   if(tempFloatListArraylist.get(i).equals(b)){
+  //     temp2 = i;
+  //   }
+  // }
+  // if(temp1 < temp2){
+  //  while(temp1 < temp2){
+  //   commandlist.add(new Command(temp2, temp2-1, 1));
+  //   temp2--;
+  //  }
+  // }
+  // if(temp2 < temp1){
+  //   while(temp2 < temp1){
+  //   commandlist.add(new Command(temp1, temp1-1, 1));
+  //   temp1--;
+  //  }
+  // }
+  //}
 }

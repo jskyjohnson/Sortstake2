@@ -9,8 +9,9 @@ class Block{
   boolean canBeMoved;  //value for if the block is in movement.
   boolean isMoved; // check value of isMoving
   boolean delay;
+  boolean acceleration;
   float newposition;
-  float speed = 15;
+  float speed = MOVEABLESIZEX;
   int delaycounter;
   color thiscolor;
   Block(){ //default constructor
@@ -24,6 +25,7 @@ class Block{
     thiscolor = color(255, 255, 255);
     delay = false;
     delaycounter = 2;
+    acceleration = false;
   }
  
   Block(float ax, float ay, float asize, float avalue){  //input constructor
@@ -37,36 +39,54 @@ class Block{
    delaycounter = 2;
    canBeMoved = true;
    thiscolor = color(255, 255, 255);
+   acceleration = true;
   }
   //DEFUALT METHODS
   void update(){ //void non-graphical update
-    if(newposition > x){
-      delay = true;
-      thiscolor = color(255, 130, 130);
-     if(x + speed > newposition){
-      x++; 
-     }else{
-      x+= speed; 
-     }
-    }else if(newposition < x){
-      delay = true;
-      thiscolor = color(255, 130, 130);
-      if(x - speed < newposition){
-       x--; 
+  if(acceleration){
+      if(newposition > x){
+        delay = true;
+        thiscolor = color(255, 130, 130);
+       if(x + speed > newposition){
+        x++; 
+       }else{
+        x+= speed; 
+       }
+      }else if(newposition < x){
+        delay = true;
+        thiscolor = color(255, 130, 130);
+        if(x - speed < newposition){
+         x--; 
+        }else{
+         x-=speed;
+        }
+       
+      }else if(delay){
+        delaycounter--;
+        if(delaycounter < 0){
+         delaycounter = 2;
+         delay = false;
+        }
       }else{
-       x-=speed;
-      }
-     
-    }else if(delay){
-      delaycounter--;
-      if(delaycounter < 0){
-       delaycounter = 2;
-       delay = false;
+        isMoved = false;
+        canBeMoved = true;
+        thiscolor = color(255,255,255);
       }
     }else{
-      isMoved = false;
-      canBeMoved = true;
-      thiscolor = color(255,255,255);
+      if(x != newposition){
+      delay = true;
+      this.x = newposition;
+      }else if(delay){
+        delaycounter--;
+        if(delaycounter < 0){
+         delaycounter = 2;
+         delay = false;
+        }
+      }else{
+        isMoved = false;
+        canBeMoved = true;
+        thiscolor = color(255,255,255);
+      }
     }
   }
   void graphicalupdate(){ //void graphical update for block object, to be called from the blocklist object
